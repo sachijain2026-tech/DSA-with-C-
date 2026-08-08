@@ -798,3 +798,12 @@ int main()
 //SORT 0s,1s and 2s IN LINKED LIST
 #include <iostream>
 using namespace std;
+class Node {
+    public:
+    int data;
+    Node* next;
+    Node(int val){
+        this->data=val;
+        this->next=NULL;
+    }
+};
