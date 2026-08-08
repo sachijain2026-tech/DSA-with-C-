@@ -807,3 +807,6 @@ class Node {
         this->next=NULL;
     }
 };
+void InsertAtTail(Node*&head,Node*&tail,int d){
+    
+}
