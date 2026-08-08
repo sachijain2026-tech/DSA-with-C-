@@ -833,7 +833,7 @@ void print_LL(Node *&head)
     }
     cout << endl;
 }
-void SortLinkedList(Node *&head)
+void SortLinkedList_I(Node *&head)
 {
     map<int, int> m;
     Node *temp = head;
@@ -846,7 +846,7 @@ void SortLinkedList(Node *&head)
     Node *tail1 = NULL;
     for (auto i : m)
     {
-        
+
         for (int j = 0; j < i.second; j++)
         {
             Node *temp1 = new Node(i.first);
@@ -862,9 +862,95 @@ void SortLinkedList(Node *&head)
             }
         }
     }
-    //head=head1;
+    // head=head1;
     cout << "Sorted Successfully!" << endl;
     print_LL(head1);
+}
+void SortLinkedList_II(Node *&head)
+{
+    Node *temp = head;
+    int count_0 = 0;
+    int count_1 = 0;
+    int count_2 = 0;
+    while (temp != NULL)
+    {
+        if (temp->data == 0)
+        {
+            count_0++;
+        }
+        else if (temp->data == 1)
+        {
+            count_1++;
+        }
+        else
+        {
+            count_2++;
+        }
+        temp = temp->next;
+    }
+    temp = head;
+    for (int i = 0; i < count_0; i++)
+    {
+        temp->data = 0;
+        temp = temp->next;
+    }
+    for (int i = 0; i < count_1; i++)
+    {
+        temp->data = 1;
+        temp = temp->next;
+    }
+    for (int i = 0; i < count_2; i++)
+    {
+        temp->data = 2;
+        temp = temp->next;
+    }
+    print_LL(head);
+}
+void SortLinkedList_III(Node *&head)
+{
+    Node *zeroHead = new Node(-1);
+    Node *oneHead = new Node(-1);
+    Node *twoHead = new Node(-1);
+    Node *zeroTail = zeroHead;
+    Node *oneTail = oneHead;
+    Node *twoTail = twoHead;
+    Node *temp = head;
+    while (temp != NULL)
+    {
+        Node *nextNode = temp->next;
+        temp->next = NULL;
+        if (temp->data == 0)
+        {
+            zeroTail->next = temp;
+            zeroTail = temp;
+        }
+        if (temp->data == 1)
+        {
+            oneTail->next = temp;
+            oneTail = temp;
+        }
+        if (temp->data == 2)
+        {
+            twoTail->next = temp;
+            twoTail = temp;
+        }
+        temp = nextNode;
+    }
+    if (zeroHead != zeroTail) //zeroth is not empty
+    {
+        if (oneHead != oneTail)
+        {
+            zeroTail->next = oneHead->next;
+            if (twoHead != twoTail)
+            {
+                oneTail->next = twoHead->next;
+                twoTail->next = NULL;
+            }
+            else
+            {
+            }
+        }
+    }
 }
 int main()
 {
@@ -879,5 +965,5 @@ int main()
     InsertAtTail(head, tail, 0);
     InsertAtTail(head, tail, 2);
     print_LL(head);
-    SortLinkedList(head);
+    SortLinkedList_II(head);
 }
