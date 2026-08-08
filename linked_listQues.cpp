@@ -795,18 +795,89 @@ int main()
 }
     */
 
-//SORT 0s,1s and 2s IN LINKED LIST
+// SORT 0s,1s and 2s IN LINKED LIST
 #include <iostream>
+#include <map>
 using namespace std;
-class Node {
-    public:
+class Node
+{
+public:
     int data;
-    Node* next;
-    Node(int val){
-        this->data=val;
-        this->next=NULL;
+    Node *next;
+    Node(int val)
+    {
+        this->data = val;
+        this->next = NULL;
     }
 };
-void InsertAtTail(Node*&head,Node*&tail,int d){
-    
+void InsertAtTail(Node *&head, Node *&tail, int d)
+{
+    Node *temp = new Node(d);
+    if (head == NULL)
+    {
+        head = temp;
+        tail = temp;
+        return;
+    }
+    tail->next = temp;
+    tail = temp;
+    return;
+}
+void print_LL(Node *&head)
+{
+    Node *temp = head;
+    while (temp != NULL)
+    {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+}
+void SortLinkedList(Node *&head)
+{
+    map<int, int> m;
+    Node *temp = head;
+    while (temp != NULL)
+    {
+        m[temp->data]++;
+        temp = temp->next;
+    }
+    Node *head1 = NULL;
+    Node *tail1 = NULL;
+    for (auto i : m)
+    {
+        
+        for (int j = 0; j < i.second; j++)
+        {
+            Node *temp1 = new Node(i.first);
+            if (head1 == NULL)
+            {
+                head1 = temp1;
+                tail1 = temp1;
+            }
+            else
+            {
+                tail1->next = temp1;
+                tail1 = temp1;
+            }
+        }
+    }
+    //head=head1;
+    cout << "Sorted Successfully!" << endl;
+    print_LL(head1);
+}
+int main()
+{
+    Node *head = NULL;
+    Node *tail = NULL;
+    InsertAtTail(head, tail, 1);
+    InsertAtTail(head, tail, 0);
+    InsertAtTail(head, tail, 1);
+    InsertAtTail(head, tail, 2);
+    InsertAtTail(head, tail, 0);
+    InsertAtTail(head, tail, 2);
+    InsertAtTail(head, tail, 0);
+    InsertAtTail(head, tail, 2);
+    print_LL(head);
+    SortLinkedList(head);
 }
