@@ -834,7 +834,7 @@ while (temp != NULL)
 }
 cout << endl;
 }
-void SortLinkedList_I(Node *&head) //using maps
+void SortLinkedList_I(Node *&head) // using maps
 {
 map<int, int> m;
 Node *temp = head;
@@ -867,7 +867,7 @@ for (auto i : m)
 cout << "Sorted Successfully!" << endl;
 print_LL(head1);
 }
-void SortLinkedList_II(Node *&head) //counting and replacing the values in list
+void SortLinkedList_II(Node *&head) // counting and replacing the values in list
 {
 Node *temp = head;
 int count_0 = 0;
@@ -907,51 +907,50 @@ for (int i = 0; i < count_2; i++)
 }
 print_LL(head);
 }
-void SortLinkedList_III(Node *&head)  //three separate linked list--INCOMPLETE HAI
+void SortLinkedList_III(Node *&head) // three separate linked list--INCOMPLETE HAI
 {
 Node *zeroHead = new Node(-1);
-Node *oneHead = new Node(-1);
-Node *twoHead = new Node(-1);
 Node *zeroTail = zeroHead;
+Node *oneHead = new Node(-1);
 Node *oneTail = oneHead;
+Node *twoHead = new Node(-1);
 Node *twoTail = twoHead;
-Node *temp = head;
-while (temp != NULL)
+Node *curr = head;
+while (curr != NULL) // create separate list 0s, 1s, 2s
 {
-    Node *nextNode = temp->next;
-    temp->next = NULL;
-    if (temp->data == 0)
+    int val = curr->data;
+    if (val == 0)
     {
-        zeroTail->next = temp;
-        zeroTail = temp;
+        zeroTail->next = curr;
+        zeroTail = curr;
     }
-    if (temp->data == 1)
+    else if (val == 1)
     {
-        oneTail->next = temp;
-        oneTail = temp;
+        oneTail->next = curr;
+        oneTail = curr;
     }
-    if (temp->data == 2)
+    else if (val == 2)
     {
-        twoTail->next = temp;
-        twoTail = temp;
+        twoTail->next = curr;
+        twoTail = curr;
     }
-    temp = nextNode;
+    curr = curr->next;
 }
-if (zeroHead != zeroTail) //zeroth is not empty
+if (oneHead->next != NULL)
 {
-    if (oneHead != oneTail)
-    {
-        zeroTail->next = oneHead->next;
-        if (twoHead != twoTail)
-        {
-            oneTail->next = twoHead->next;
-            twoTail->next = NULL;
-        }
-        else
-        {
-        }
-    }
+    zeroTail->next = oneHead->next;
 }
+else
+{
+    zeroTail->next = twoHead->next;
+}
+oneTail->next = twoHead->next;
+twoTail->next = NULL;
+head = zeroHead->next;
+delete oneHead;
+delete zeroHead;
+delete twoHead;
+print_LL(head);
 }
 int main()
 {
@@ -966,9 +965,10 @@ InsertAtTail(head, tail, 2);
 InsertAtTail(head, tail, 0);
 InsertAtTail(head, tail, 2);
 print_LL(head);
-SortLinkedList_II(head);
+SortLinkedList_III(head);
 }
 */
+/*
 
 // MERGE 2 LINKED LIST
 #include <iostream>
@@ -1007,28 +1007,215 @@ void print_LL(Node *&head)
     }
     cout << endl;
 }
-Node*& MergeSorted_LL(Node*&head1,Node*&head2){
-    if(head1==NULL){
+Node *MergeSorted_LL(Node *&head1, Node *&head2)
+{
+    if (head1 == NULL)
+    {
         return head2;
     }
-    if(head2==NULL){
+    if (head2 == NULL)
+    {
         return head1;
     }
-    
+    Node *temp = NULL;
+    Node *head_1 = NULL;
+    Node *curr = NULL;
+    Node *prev = NULL;
+    Node *nextNode = NULL;
+    if (head1->data > head2->data)
+    {
+        temp = head1;
+        curr = head2->next;
+        prev = head2;
+        head_1 = head2;
+    }
+    else
+    {
+        temp = head2;
+        curr = head1->next;
+        prev = head1;
+        head_1 = head1;
+    }
+    while (temp != NULL)
+    {
+        Node *nextNode = NULL;
+        if (curr != NULL)
+        {
+            if (temp->data >= prev->data && temp->data <= curr->data)
+            {
+                nextNode = temp->next;
+                temp->next = curr;
+                prev->next = temp;
+                prev = temp;
+                temp = nextNode;
+                // curr=curr->next;
+                // prev=curr;
+            }
+            else
+            {
+                prev = curr;
+                curr = curr->next;
+            }
+        }
+        else
+        {
+            prev->next = temp;
+            break;
+        }
+    }
+    print_LL(head_1);
+    return head_1;
 }
-int main(){
-    Node*head1=NULL;
-    Node*tail1=NULL;
-    Node*head2=NULL;
-    Node*tail2=NULL;
-    InsertAtTail(head1,tail1,1);
-    InsertAtTail(head1,tail1,4);
-    InsertAtTail(head1,tail1,5);
-    InsertAtTail(head2,tail2,2);
-    InsertAtTail(head2,tail2,3);
-    InsertAtTail(head2,tail2,5);
+
+int main()
+{
+    Node *head1 = NULL;
+    Node *tail1 = NULL;
+    Node *head2 = NULL;
+    Node *tail2 = NULL;
+    InsertAtTail(head1, tail1, 1);
+    InsertAtTail(head1, tail1, 4);
+    InsertAtTail(head1, tail1, 5);
+    InsertAtTail(head2, tail2, 2);
+    InsertAtTail(head2, tail2, 7);
+    InsertAtTail(head2, tail2, 8);
     print_LL(head1);
     print_LL(head2);
-
+    MergeSorted_LL(head1, head2);
 
 }
+*/
+
+/*
+// PALINDROME LINKED LIST
+#include <iostream>
+#include <vector>
+using namespace std;
+class Node
+{
+public:
+    int data;
+    Node *next;
+    Node(int val)
+    {
+        this->data = val;
+        this->next = NULL;
+    }
+};
+void InsertAtTail(Node *&head, Node *&tail, int d)
+{
+    Node *temp = new Node(d);
+    if (head == NULL)
+    {
+        head = temp;
+        tail = temp;
+        return;
+    }
+    tail->next = temp;
+    tail = temp;
+    return;
+}
+void print_LL(Node *&head)
+{
+    Node *temp = head;
+    while (temp != NULL)
+    {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+}
+int getLength(Node *&head)
+{
+    Node *temp = head;
+    int len = 0;
+    while (temp != NULL)
+    {
+        len++;
+        temp = temp->next;
+    }
+    return len;
+}
+Node *reverse_LL(Node *&head)
+{
+    Node *prevNode = NULL;
+    Node *currNode = head;
+    Node *nextNode = NULL;
+    if (head == NULL || head->next == NULL)
+    {
+        return head;
+    }
+    while (currNode != NULL)
+    {
+        nextNode = currNode->next;
+        currNode->next = prevNode;
+        prevNode = currNode;
+        currNode = nextNode;
+    }
+    head = prevNode;
+    return head;
+}
+bool isPalindrome(Node *head)
+{
+    int len = getLength(head);
+    if (head == NULL || head->next == NULL)
+    {
+        return 1;
+    }
+    Node *head2 = head;
+    Node *head1 = head;
+    Node *prevNode = NULL;
+    if (len % 2 == 0)
+    {
+        for (int i = 0; i < (len + 1) / 2; i++)
+        {
+            prevNode = head2;
+            head2 = head2->next;
+        }
+        prevNode->next = NULL;
+        Node *temp = reverse_LL(head2);
+        while (temp != NULL && head1 != NULL)
+        {
+            if (head1->data != temp->data)
+            {
+                return 0;
+            }
+            head1 = head1->next;
+            temp = temp->next;
+        }
+        return 1;
+    }
+    else if (len % 2 != 0)
+    {
+        for (int i = 0; i <= (len / 2); i++)
+        {
+            prevNode = head2;
+            head2 = head2->next;
+        }
+        prevNode->next = NULL;
+        Node *temp = reverse_LL(head2);
+        while (temp != NULL)
+        {
+            if (head1->data != temp->data)
+            {
+                return 0;
+            }
+            head1 = head1->next;
+            temp = temp->next;
+        }
+        return 1;
+    }
+    return 0;
+}
+int main()
+{
+    Node *head = NULL;
+    Node *tail = NULL;
+    InsertAtTail(head, tail, 1);
+    InsertAtTail(head, tail, 2);
+    InsertAtTail(head, tail, 2);
+    InsertAtTail(head, tail, 1);
+    int a = isPalindrome(head);
+    cout << a << endl;
+}
+*/
