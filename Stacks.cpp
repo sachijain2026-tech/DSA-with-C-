@@ -1,3 +1,4 @@
+// STACK IMPLEMENTATION USING ARRAYS
 #include <iostream>
 using namespace std;
 class Stack
@@ -18,7 +19,6 @@ public:
         {
             top++;
             arr[top] = val;
-            
         }
         else
         {
@@ -67,6 +67,6 @@ int main()
     s1.push(3);
     s1.push(4);
     s1.peek();
-
-    
+    cout << s1.isEmpty() << endl;
+    cout <<s1.top<<endl;
 }
