@@ -657,6 +657,7 @@ int main()
     cout << powerOfTwo(n) << endl;
 }
     */
+/*
 #include <iostream>
 using namespace std;
 #include <set>
@@ -678,5 +679,112 @@ int main(){
     for(auto i:vec){
         cout<<i<<" ";
     }
-    
+
+}
+    */
+
+/*
+//Print all nodes reachable from a given starting node in a digraph using BFS method
+#include <iostream>
+#include <queue>
+#include <vector>
+using namespace std;
+void BFS_traversal(int s, vector<vector<int>> &graph, int v)
+{
+vector<bool> visited(v, false);
+queue<int> q;
+visited[s] = true;
+q.push(s);
+while (q.empty() != true)
+{
+    int u = q.front();
+    q.pop();
+    cout << u << " ";
+    for (int v : graph[u])
+    {
+        if (visited[v] != true)
+        {
+            visited[v] = true;
+            q.push(v);
+        }
+    }
+}
+}
+int main()
+{
+int v = 6;
+vector<vector<int>> graph(v);
+graph[0].push_back(10);
+graph[1].push_back(20);
+graph[2].push_back(30);
+graph[3].push_back(40);
+graph[4].push_back(50);
+int startNode = 0;
+cout << "BFS traversal output from " << startNode << ":";
+BFS_traversal(startNode, graph, v);
+return 0;
+}
+*/
+
+// Check Whether a given graph is connected or not using DFS method
+#include <iostream>
+#include <vector>
+using namespace std;
+void DFS(int node, vector<vector<int>> &graph, vector<bool> &visited)
+{
+    visited[node] = true;
+    for (int n : graph[node])
+    {
+        if (visited[n] != true)
+        {
+            DFS(n, graph, visited);
+        }
+    }
+}
+// int main()
+// {
+//     int v, e;
+//     cout << "Number of vertices: ";
+//     cin >> v;
+//     cout << "Number of edges: ";
+//     cin >> e;
+//     vector<vector<int>> graph(v);
+//     cout << "Enter edges: ";
+//     for (int i = 0; i < e; i++)
+//     {
+//         int u, v;
+//         cin >> u;
+//         cin >> v;
+//         graph[u].push_back(v);
+//         graph[u].push_back(u);
+//     }
+//     vector<bool> visited(v, false);
+//     DFS(0, graph, visited);
+//     for (int i = 0; i < v; i++)
+//     {
+//         if (!visited[i])
+//         {
+//             cout << "Graph is NOT connected." << endl;
+//             return 0;
+//         }
+//     }
+//     cout << "Graph is connected." << endl;
+//     return 0;
+// }
+
+
+//Priority Scheduling-PREEMPTIVE
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+int main(){
+    int n;
+    cout<<"Enter the number of processes";
+    cin>>n;
+    int pid[100],bt[100],tat[100],priority[100],ct[100],wt[100],at[100];
+    bool completed[100]={true};
+    for(int i;i<n;i++){
+        
+    }
 }
