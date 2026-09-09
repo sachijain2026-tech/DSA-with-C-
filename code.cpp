@@ -772,19 +772,55 @@ void DFS(int node, vector<vector<int>> &graph, vector<bool> &visited)
 //     return 0;
 // }
 
-
-//Priority Scheduling-PREEMPTIVE
+// Priority Scheduling-NON-PREEMPTIVE
 #include <iostream>
 #include <vector>
 #include <algorithm>
 using namespace std;
-int main(){
+int main()
+{
     int n;
-    cout<<"Enter the number of processes";
-    cin>>n;
-    int pid[100],bt[100],tat[100],priority[100],ct[100],wt[100],at[100];
-    bool completed[100]={true};
-    for(int i;i<n;i++){
-        
+    cout << "Enter the number of processes";
+    cin >> n;
+    int pid[100], bt[100], tat[100], priority[100], ct[100], wt[100], at[100];
+    bool completed[100] = {true};
+    for (int i; i < n; i++)
+    {
+        pid[i] = i + 1;
+        cout << "Enter details for:" << pid[i] << endl;
+        cout << "Arrival Time:";
+        cin >> at[i];
+        cout << "Burst Time: ";
+        cin >> bt[i];
+        cout << "Priority: ";
+        cin >> priority[i];
     }
+    int currentTime = 0;
+    int count = 0;
+    while (count < n)
+    {
+        int idx = -1;
+        for (int i = 0; i < n; i++)
+        {
+            if (completed[i] != true && at[i] <= currentTime)
+            {
+                if (idx == -1 || priority[i] < priority[idx])
+                {
+                    idx = i;
+                }
+            }
+        }
+        if (idx == -1)
+        {
+            currentTime++;
+            continue;
+        }
+        currentTime=currentTime + bt[idx];
+        ct[idx]=currentTime;
+        tat[idx]=ct[idx]-at[idx];
+        wt[idx]=tat[idx]-bt[idx];
+        completed[idx]=true;
+        count++;
+    }
+    cout<,
 }

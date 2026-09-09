@@ -483,6 +483,7 @@ int main(){
 }
 */
 
+/*
 // SEARCH IN 2D MATRIX-II
 #include <iostream>
 using namespace std;
@@ -515,4 +516,13 @@ int main()
     {
         cout << "not found" << endl;
     }
+}
+    */
+
+//Majority Element
+#include <iostream>
+using namespace std;
+#include <vector>
+int majorityElement(){
+    
 }
