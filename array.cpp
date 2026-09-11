@@ -559,7 +559,7 @@ for (int i = 0; i < n; i++)
 cout << "Majority element is: " << majorityElement(vec);
 }
 */
-
+/*
 // Rotate Array
 #include <iostream>
 #include <vector>
@@ -596,5 +596,48 @@ int main()
     cout<<"After: ";
     for(auto i:ans){
         cout<<i<<" ";
+    }
+}
+    */
+
+// Move Zeroes to end
+#include <iostream>
+#include <algorithm>
+using namespace std;
+int main()
+{
+    vector<int> vec;
+    int n;
+    cout << "How many elts u wanna enter?: ";
+    cin >> n;
+    cout << "Enter the elements:" << endl;
+    for (int i = 0; i < n; i++)
+    {
+        int elt;
+        cin >> elt;
+        vec.push_back(elt);
+    }
+    cout<<"Before:";
+    for(auto i:vec){
+        cout<<i<<" ";
+    }
+    int s = 0, e = 1;
+    while (s < vec.size() && e < vec.size())
+    {
+        if (vec[s] == 0 && vec[e] != 0)
+        {
+            swap(vec[s], vec[e]);
+            s++;
+            e = s + 1;
+        }
+        else if (vec[s] == 0 && vec[e] == 0)
+        {
+            e++;
+        }
+        else
+        {
+            s++;
+            e = s + 1;
+        }
     }
 }
