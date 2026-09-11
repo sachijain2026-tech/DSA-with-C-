@@ -519,29 +519,57 @@ int main()
 }
     */
 
-    /*
+/*
 // Majority Element
 #include <iostream>
 using namespace std;
 #include <vector>
 int majorityElement(vector<int> &vec)
 {
-    int count = 0;
-    int elt;
-    for (int i = 0; i < vec.size(); i++)
-    {
-        if (count == 0){
-            count = 1;
-            elt = vec[i];
-        }
-        else if (elt = vec[i]){
-            count++;
-        }
-        else{
-            count--;
-        }
+int count = 0;
+int elt;
+for (int i = 0; i < vec.size(); i++)
+{
+    if (count == 0){
+        count = 1;
+        elt = vec[i];
     }
-    return elt;
+    else if (elt = vec[i]){
+        count++;
+    }
+    else{
+        count--;
+    }
+}
+return elt;
+}
+int main()
+{
+vector<int> vec;
+int n;
+cout << "How many elts u wanna enter?: ";
+cin >> n;
+cout << "Enter the elements:" << endl;
+for (int i = 0; i < n; i++)
+{
+    int elt;
+    cin >> elt;
+    vec.push_back(elt);
+}
+cout << "Majority element is: " << majorityElement(vec);
+}
+*/
+
+// Rotate Array
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+vector<int> rotateArray(vector<int>&vec,int k){
+    reverse(vec.begin(),vec.end());
+    reverse(vec.begin(),vec.begin()+k);
+    reverse(vec.begin()+k,vec.end());
+    return vec;
 }
 int main()
 {
@@ -556,8 +584,17 @@ int main()
         cin >> elt;
         vec.push_back(elt);
     }
-    cout << "Majority element is: " << majorityElement(vec);
+    cout<<"Before:";
+    for(auto i:vec){
+        cout<<i<<" ";
+    }
+    cout<<endl;
+    int k;
+    cout<<"Rotate by places: ";
+    cin>>k;
+    vector<int>ans=rotateArray(vec,k);
+    cout<<"After: ";
+    for(auto i:ans){
+        cout<<i<<" ";
+    }
 }
-    */
-
-//Rotate Array
