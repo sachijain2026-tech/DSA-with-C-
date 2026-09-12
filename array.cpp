@@ -600,6 +600,7 @@ int main()
 }
     */
 
+    /*
 // Move Zeroes to end
 #include <iostream>
 #include <algorithm>
@@ -641,4 +642,26 @@ int main()
             e = s + 1;
         }
     }
+}
+    */
+
+//Search in Rotated Sorted Array
+#include <iostream>
+#include <algorithm>
+#include<vector>
+using namespace std;
+int main()
+{
+    vector<int>vec;
+    int n;
+    cout << "How many elts u wanna enter?: ";
+    cin >> n;
+    cout << "Enter the elements:" << endl;
+    for (int i = 0; i < n; i++)
+    {
+        int elt;
+        cin >> elt;
+        vec.push_back(elt);
+    }
+    
 }
