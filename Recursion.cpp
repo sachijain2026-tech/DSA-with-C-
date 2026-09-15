@@ -72,6 +72,7 @@ int main()
 using namespace std;
 void sayDigit(int n)
 {
+    // vector<string>vec;
     string arr[10] = {"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
     if (n == 0)
     {
@@ -79,9 +80,8 @@ void sayDigit(int n)
     }
     int a = n % 10;
     n = n / 10;
-    cout << arr[a] << " ";
     sayDigit(n);
-    
+    cout << arr[a] << " ";
 }
 int main()
 {
