@@ -67,4 +67,13 @@ int main()
 }
     */
 
-//Count ways to reach Nth Stair
+//Say Digits-e.g. 412= Four One Two
+#include <iostream>
+using namespace std;
+int main(){
+    string arr[10]={"Zero","One","Two","Three","Four","Five","Six","Seven","Eight","Nine"};
+    int n;
+    cout<<"Enter the number: ";
+    cin>>n;
+    
+}
