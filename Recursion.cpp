@@ -70,17 +70,18 @@ int main()
 // Say Digits-e.g. 412= Four One Two
 #include <iostream>
 using namespace std;
-string sayDigit(int n)
+void sayDigit(int n)
 {
     string arr[10] = {"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
     if (n == 0)
     {
-        return arr[0];
+        return;
     }
     int a = n % 10;
+    n = n / 10;
     cout << arr[a] << " ";
-    int b = n / 10;
-    return sayDigit(b);
+    sayDigit(n);
+    
 }
 int main()
 {
