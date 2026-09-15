@@ -66,7 +66,7 @@ int main()
     }
 }
     */
-
+/*
 // Say Digits-e.g. 412= Four One Two
 #include <iostream>
 using namespace std;
@@ -90,3 +90,18 @@ int main()
     cin >> n;
     sayDigit(n);
 }
+*/
+
+//BINARY SEARCH USING RECURSION
+
+//1.Create Func to tell if sorted
+#include <iostream>
+using namespace std;
+bool isSorted(int arr,int n){
+    
+}
+int main(){
+    int arr[5]={2,3,4,5,6};
+    isSorted(arr,5);
+}
+
