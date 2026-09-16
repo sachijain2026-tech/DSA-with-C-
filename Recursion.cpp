@@ -208,22 +208,29 @@ int main()
 }
     */
 
+    /*
 // REVERSE A STRING
 #include <iostream>
 #include <string>
 using namespace std;
 string reverseString(string s,int l,int r)
 {
-    if(l==r){
+    if(l>r){
         return s;
     }
     char s1=s[l];
     s[l]=s[r];
     s[r]=s1;
-    return reverseString(s,l++,r--);
+    return reverseString(s,l+1,r-1);
 }
 int main()
 {
-    string s = "abcde";
+    string s = "SachiJain";
     cout<<reverseString(s,0,s.length()-1);
 }
+*/
+
+//CHECK PALINDROME
+#include <iostream>
+#include <string>
+using namespace std;
