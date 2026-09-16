@@ -131,6 +131,7 @@ int main()
 }
 */
 
+/*
 // LINEAR SEARCH
 #include <iostream>
 using namespace std;
@@ -146,14 +147,13 @@ bool linearSearch(int arr[], int k, int size)
     // else if (size < 0){
     //     return false;
     // }
-    if(size<0){
+    if(size<=0){
         return false;
     }
     if(arr[0]==k){
         return true;
     }
-    bool ans=linearSearch(arr+1,k,size-1);
-    return ans;
+    return linearSearch(arr+1,k,size-1);
 }
 int main()
 {
@@ -170,4 +170,60 @@ int main()
     {
         cout << "Not found" << endl;
     }
+}
+*/
+
+/*
+// BINARY SEARCH
+#include <iostream>
+#include <vector>
+using namespace std;
+int binarySearch(vector<int> &nums, int target, int s, int e)
+{
+    if (s > e){
+        return -1;
+    }
+    int mid = s + (e - s) / 2;
+    if (nums[mid] == target){
+        return mid;
+    }
+    else if (target > nums[mid]){
+        s = mid + 1;
+        return binarySearch(nums, target, s, e);
+    }
+    else{
+        e = mid - 1;
+        return binarySearch(nums, target, s, e);
+    }
+    mid = s + (e - s) / 2;
+}
+int main()
+{
+    vector<int>vec={1,2,3,4,5};
+    int k;
+    cout<<"Enter the element: ";
+    cin>>k;
+    int s=0,e=vec.size()-1;
+    cout<<binarySearch(vec,k,s,e);
+}
+    */
+
+// REVERSE A STRING
+#include <iostream>
+#include <string>
+using namespace std;
+string reverseString(string s,int l,int r)
+{
+    if(l==r){
+        return s;
+    }
+    char s1=s[l];
+    s[l]=s[r];
+    s[r]=s1;
+    return reverseString(s,l++,r--);
+}
+int main()
+{
+    string s = "abcde";
+    cout<<reverseString(s,0,s.length()-1);
 }
