@@ -92,9 +92,8 @@ int main()
 }
 */
 
-// BINARY SEARCH USING RECURSION
 /*
-//1.Create Func to tell if sorted
+//CREATE A FUNCTION TO TELL IF ARRAY IS SORTED
 #include <iostream>
 using namespace std;
 bool isSorted(int arr[],int n){
@@ -111,7 +110,7 @@ int main(){
 }
 */
 
-// 2.Return sum of elements of array
+// RETURN SUM OF ELEMENTS OF ARRAY
 /*
 #include <iostream>
 using namespace std;
@@ -132,4 +131,43 @@ int main()
 }
 */
 
-//3.
+// LINEAR SEARCH
+#include <iostream>
+using namespace std;
+bool linearSearch(int arr[], int k, int size)
+{
+    // if (size > 0 && arr[0] == k){
+    //     return true;
+    // }
+    // else if (size > 0 && arr[0] != k){
+    //     bool ans = linearSearch(arr + 1, k, size - 1);
+    //     return ans;
+    // }
+    // else if (size < 0){
+    //     return false;
+    // }
+    if(size<0){
+        return false;
+    }
+    if(arr[0]==k){
+        return true;
+    }
+    bool ans=linearSearch(arr+1,k,size-1);
+    return ans;
+}
+int main()
+{
+    int arr[10] = {2, 4, 43, 87, 100, 98, 29, 1, 0, 65};
+    int elt;
+    cout << "Enter the elt u wanna search for: ";
+    cin >> elt;
+    int ans = linearSearch(arr, elt, 10);
+    if (ans == 1)
+    {
+        cout << "Element found" << endl;
+    }
+    else
+    {
+        cout << "Not found" << endl;
+    }
+}
