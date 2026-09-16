@@ -255,6 +255,7 @@ int main(){
 }
 */
 
+/*
 //POWER OF X
 #include <iostream>
 using namespace std;
@@ -281,3 +282,4 @@ int main(){
     cin>>n;
     cout<<myPow(x,n);
 }
+*/
