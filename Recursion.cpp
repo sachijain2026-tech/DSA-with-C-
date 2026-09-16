@@ -92,22 +92,44 @@ int main()
 }
 */
 
-//BINARY SEARCH USING RECURSION
-
+// BINARY SEARCH USING RECURSION
+/*
 //1.Create Func to tell if sorted
 #include <iostream>
 using namespace std;
-bool isSorted(int arr[],int n,int i){
+bool isSorted(int arr[],int n){
     if(n==1 || n==0){
-        return 1;
+        return true;
     }
-    if(arr[i]<arr[i+1]){
-        i++;
-        return isSorted(arr,n,i);
-    }
+    if(arr[0]>arr[1]) return false;
+    return isSorted(arr+1,n-1);
 }
 int main(){
-    int arr[5]={2,3,4,5,6};
-    isSorted(arr,5,0);
+    int arr[5]={7,3,4,5,6};
+    bool ans=isSorted(arr,5);
+    cout<<ans<<endl;
 }
+*/
 
+// 2.Return sum of elements of array
+/*
+#include <iostream>
+using namespace std;
+int sumElements(int arr[], int size)
+{
+    if(size==1){
+        return arr[0];
+    }
+    int sum=arr[0];
+    int ans=sumElements(arr+1,size-1);
+    sum+=ans;
+    return sum;
+}
+int main()
+{
+    int arr[5] = {1, 2, 3, 4, 5};
+    cout<< sumElements(arr, 5);
+}
+*/
+
+//3.
