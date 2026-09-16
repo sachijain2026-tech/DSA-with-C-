@@ -229,8 +229,55 @@ int main()
     cout<<reverseString(s,0,s.length()-1);
 }
 */
-
+/*
 //CHECK PALINDROME
 #include <iostream>
 #include <string>
 using namespace std;
+bool checkPalindrome(string& s,int l,int r){
+    if(l>r){
+        return true;
+    }
+    if(s[l]!=s[r]){
+        return false;
+    }
+    return checkPalindrome(s,l+1,r-1);
+}
+int main(){
+    string s="abbccbba";
+    bool ans=checkPalindrome(s,0,s.length()-1);
+    if(ans==1){
+        cout<<"Yeah!";
+    }
+    else{
+        cout<<"Nope";
+    }
+}
+*/
+
+//POWER OF X
+#include <iostream>
+using namespace std;
+int myPow(int x,int n){
+    if(n==0){
+        return 1;
+    }
+    if(n==1){
+        return x;
+    }
+    int b=myPow(x,n/2);
+    if(n%2==0){
+        return b*b;
+    }else{
+        return x * b* b;
+    }
+}
+int main(){
+    int x;
+    cout<<"Enter the number: ";
+    cin>>x;
+    int n;
+    cout<<"Enter the power: ";
+    cin>>n;
+    cout<<myPow(x,n);
+}
