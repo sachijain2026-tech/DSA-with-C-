@@ -97,11 +97,17 @@ int main()
 //1.Create Func to tell if sorted
 #include <iostream>
 using namespace std;
-bool isSorted(int arr,int n){
-    
+bool isSorted(int arr[],int n,int i){
+    if(n==1 || n==0){
+        return 1;
+    }
+    if(arr[i]<arr[i+1]){
+        i++;
+        return isSorted(arr,n,i);
+    }
 }
 int main(){
     int arr[5]={2,3,4,5,6};
-    isSorted(arr,5);
+    isSorted(arr,5,0);
 }
 
