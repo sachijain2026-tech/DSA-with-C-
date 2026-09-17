@@ -61,8 +61,7 @@ int main()
         // }
         while (prev >= 0)
         {
-            if (arr[prev] > current)
-            {
+            if (arr[prev] > current){
                 arr[prev + 1] = arr[prev];
                 arr[prev] = current;
                 prev--;
@@ -81,4 +80,5 @@ int main()
 using namespace std;
 int main()
 {
+
 }
