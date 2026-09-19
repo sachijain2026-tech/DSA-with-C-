@@ -22,7 +22,7 @@ The repository serves as a structured record of my **DSA preparation, problem-so
 | 🔤 **Strings**            | String manipulation, pattern problems, hashing, etc.     |
 | 🔗 **Linked Lists**       | Singly & doubly linked lists, operations, problems       |
 | 📚 **Stacks & Queues**    | Implementations and problem solving                      |
-| 🔍 **Searching**          | Linear search, binary search, and variations             |
+| 🔍 **Searching**          | Linear search, binary search, and variations, problems.            |
 | 📊 **Sorting**            | Fundamental and efficient sorting algorithms             |
 | 🔄 **Recursion**          | Recursive problem solving and patterns                   |
 | 🧩 **Backtracking**       | Combinations, permutations, constraint-based problems    |
