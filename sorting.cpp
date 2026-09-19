@@ -78,15 +78,23 @@ int main()
 // MERGE SORT
 #include <iostream>
 using namespace std;
-void mergeSort(int arr[],int s,int e){
-    if(s>e){
+void mergeSort(int arr[], int s, int e)
+{
+    int mid = s + (e - s) / 2;
+    if (s > e){
         return;
     }
-    
+    mergeSort(arr, s, mid);
+    mergeSort(arr, mid, e);
+    merge(arr, s, e);
+}
+void merge(int arr[], int s, int e)
+{
+    int mid=s+(e-s)/2; 
 }
 int main()
 {
-    int arr[5]={2,5,1,6,9};
-    int n=5;
-    mergeSort(arr,0,n-1);
+    int arr[5] = {2, 5, 1, 6, 9};
+    int n = 5;
+    mergeSort(arr, 0, n - 1);
 }
