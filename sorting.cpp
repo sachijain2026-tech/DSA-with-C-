@@ -80,7 +80,7 @@ int main()
 #include <vector>
 using namespace std;
 void merge(vector<int> &vec, int s, int e) // conquer
-{ 
+{
     int mid = s + (e - s) / 2;
     int i = 0, j = mid + 1;
     vector<int> ans;
@@ -89,6 +89,22 @@ void merge(vector<int> &vec, int s, int e) // conquer
     for (int i = 0; i <= mid; i++)
     {
         n1.push_back(vec[i]);
+    }
+    for (int i = mid + 1; i <= e; i++)
+    {
+        n2.push_back(vec[i]);
+    }
+    while (i < n1.size() && j < n2.size())
+    {
+        if (n1[i] > n2[j]){
+            ans.push_back(n2[j]);
+            j++;
+        }
+        else if (n1[i] < n2[j]){
+            ans.push_back(n1[i]);
+            i++;
+        }
+        else if ()
     }
 }
 void mergeSort(vector<int> &vec, int s, int e) // divide
