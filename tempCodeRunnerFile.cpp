@@ -1,1 +1,3 @@
-size > 0 && 
+for(auto i:ans){
+    //     cout<<i<<" ";
+    // }

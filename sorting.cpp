@@ -79,14 +79,14 @@ int main()
 #include <iostream>
 #include <vector>
 using namespace std;
-void merge(vector<int> &vec, int s, int e) // conquer
+vector<int> merge(vector<int> &vec, int s, int e) // conquer
 {
     int mid = s + (e - s) / 2;
-    int i = 0, j = mid + 1;
+    int i = 0, j =0;
     vector<int> ans;
     vector<int> n1;
     vector<int> n2;
-    for (int i = 0; i <= mid; i++)
+    for (int i = s; i <= mid; i++)
     {
         n1.push_back(vec[i]);
     }
@@ -104,23 +104,47 @@ void merge(vector<int> &vec, int s, int e) // conquer
             ans.push_back(n1[i]);
             i++;
         }
-        else if ()
+        else if (n1[i]==n2[j]){
+            ans.push_back(n1[i]);
+            ans.push_back(n2[j]);
+            i++,j++;
+        }
     }
+    while(i<n1.size()){
+        ans.push_back(n1[i++]);
+    }
+    while(j<n2.size()){
+        ans.push_back(n2[j++]);
+    }
+    cout<<"After Sorting: ";
+    for(int x: ans) cout << x << " ";
+    cout<<endl;
+    return ans;
+
 }
 void mergeSort(vector<int> &vec, int s, int e) // divide
 {
     int mid = s + (e - s) / 2;
-    if (s > e)
+    if (s >=e)
     {
-        return;
+        return ;
     }
     mergeSort(vec, s, mid);
     mergeSort(vec, mid + 1, e);
-    merge(vec, s, e);
+    vector<int>ans=merge(vec, s, e);
+    // for(auto i:ans){
+    //     cout<<i<<" ";
+    // }
 }
 int main()
 {
     vector<int> vec = {2, 5, 1, 6, 9};
     int s = 0, e = vec.size() - 1;
+    cout<<"Before sorting: ";
+    for(auto i:vec){
+        cout<<i<<" ";
+    }
+    cout<<endl;
     mergeSort(vec, s, e);
+    
 }
