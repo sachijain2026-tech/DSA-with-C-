@@ -79,10 +79,10 @@ int main()
 #include <iostream>
 #include <vector>
 using namespace std;
-vector<int> merge(vector<int> &vec, int s, int e) // conquer
+void merge(vector<int> &vec, int s, int e) // conquer
 {
     int mid = s + (e - s) / 2;
-    int i = 0, j =0;
+    int i = 0, j = 0;
     vector<int> ans;
     vector<int> n1;
     vector<int> n2;
@@ -96,42 +96,47 @@ vector<int> merge(vector<int> &vec, int s, int e) // conquer
     }
     while (i < n1.size() && j < n2.size())
     {
-        if (n1[i] > n2[j]){
+        if (n1[i] > n2[j])
+        {
             ans.push_back(n2[j]);
             j++;
         }
-        else if (n1[i] < n2[j]){
+        else if (n1[i] < n2[j])
+        {
             ans.push_back(n1[i]);
             i++;
         }
-        else if (n1[i]==n2[j]){
+        else if (n1[i] == n2[j])
+        {
             ans.push_back(n1[i]);
             ans.push_back(n2[j]);
-            i++,j++;
+            i++, j++;
         }
     }
-    while(i<n1.size()){
+    while (i < n1.size())
+    {
         ans.push_back(n1[i++]);
     }
-    while(j<n2.size()){
+    while (j < n2.size())
+    {
         ans.push_back(n2[j++]);
     }
-    cout<<"After Sorting: ";
-    for(int x: ans) cout << x << " ";
-    cout<<endl;
-    return ans;
-
+    cout << "After Sorting: ";
+    for (int k = s; k <= e; k++)
+    {
+        vec[k] = ans[k - s];
+    }
 }
 void mergeSort(vector<int> &vec, int s, int e) // divide
 {
     int mid = s + (e - s) / 2;
-    if (s >=e)
+    if (s >= e)
     {
-        return ;
+        return;
     }
     mergeSort(vec, s, mid);
     mergeSort(vec, mid + 1, e);
-    vector<int>ans=merge(vec, s, e);
+    vector<int> ans = merge(vec, s, e);
     // for(auto i:ans){
     //     cout<<i<<" ";
     // }
@@ -140,11 +145,11 @@ int main()
 {
     vector<int> vec = {2, 5, 1, 6, 9};
     int s = 0, e = vec.size() - 1;
-    cout<<"Before sorting: ";
-    for(auto i:vec){
-        cout<<i<<" ";
+    cout << "Before sorting: ";
+    for (auto i : vec)
+    {
+        cout << i << " ";
     }
-    cout<<endl;
+    cout << endl;
     mergeSort(vec, s, e);
-    
 }
