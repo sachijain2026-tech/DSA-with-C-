@@ -79,9 +79,28 @@ int main()
 #include <iostream>
 #include <vector>
 using namespace std;
-void mergeSort(vector<int> &vec, int s, int e)
+void merge(vector<int> &vec, int s, int e) // conquer
+{ 
+    int mid = s + (e - s) / 2;
+    int i = 0, j = mid + 1;
+    vector<int> ans;
+    vector<int> n1;
+    vector<int> n2;
+    for (int i = 0; i <= mid; i++)
+    {
+        n1.push_back(vec[i]);
+    }
+}
+void mergeSort(vector<int> &vec, int s, int e) // divide
 {
-    
+    int mid = s + (e - s) / 2;
+    if (s > e)
+    {
+        return;
+    }
+    mergeSort(vec, s, mid);
+    mergeSort(vec, mid + 1, e);
+    merge(vec, s, e);
 }
 int main()
 {
