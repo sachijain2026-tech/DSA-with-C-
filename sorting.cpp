@@ -158,17 +158,54 @@ mergeSort(vec, s, e);
 
 // QUICK SORT
 #include <iostream>
+#include <algorithm>
+#include <vector>
 using namespace std;
-void quickSort(int arr[],int size,int pivot){
-    if(size==1){
+int partition(vector<int>& vec,int s,int e)
+{
+    int pivot = vec[0];
+    int count = 0;
+    for (int i = 1; i < vec.size(); i++){
+        if (vec[i] < pivot){
+            count++;
+        }
+    }
+    swap(vec[count+s], vec[s]);
+    int i=0,j=vec.size()-1;
+    while(i<j || i!=pivot || j!=pivot){
+        if(vec[i]>pivot && vec[j]<pivot){
+            swap(vec[i],vec[j]);
+            i++,j--;
+        }
+        else if(vec[i]>pivot && vec[j]>pivot){
+            j--;
+        }
+        else if(vec[i]<pivot && vec[j]<pivot){
+            i++;
+        }
+        else{
+            i++,j--;
+        }
+    }
+    return i;
+}
+void quickSort(vector<int>& vec,int s, int e)
+{
+    if (vec.size() == 1)
+    {
         return;
     }
-    int p=pivot
-
+    int p = partition(vec,0,vec.size()-1);
+    quickSort(vec,s, p - 1);
+    quickSort(vec,p + 1, e);
+    
 }
 int main()
 {
-    int arr[6]={3,5,1,8,2,4}; 
-    int pivot=arr[0];
-    quickSort(arr,6,pivot);
+    vector<int>vec={3, 5, 1, 8, 2, 4};
+    quickSort(vec, 6, 0);
+    for(auto i:vec){
+        cout<<i<<" ";
+    }
+    return 0;
 }

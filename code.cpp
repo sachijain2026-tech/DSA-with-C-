@@ -772,6 +772,7 @@ void DFS(int node, vector<vector<int>> &graph, vector<bool> &visited)
 //     return 0;
 // }
 
+/*
 // Priority Scheduling-NON-PREEMPTIVE
 #include <iostream>
 #include <vector>
@@ -823,4 +824,54 @@ int main()
         count++;
     }
     cout<,
+}
+    */
+
+// CHECK FOR ARMSTRONG
+#include <iostream>
+using namespace std;
+int power(int n,int pow){
+    if(pow==0){
+        return 1;
+    }
+    return n*power(n,pow-1);
+}
+bool isArmstrong(int n)
+{
+    if(n==0) return true;
+    if(n<0) return false;
+    int x = 0;
+    int num=n;
+    vector<int> vec;
+    while (n != 0)
+    {
+        x = n % 10;
+        vec.push_back(x);
+        n = n / 10;
+    }
+    int pow = vec.size();
+    int sum = 0;
+    for (auto i : vec)
+    {
+        sum += power(i,pow);
+    }
+    if (sum == num)
+    {
+        return true;
+    }
+    return false;
+}
+int main()
+{
+    int n;
+    cout << "Enter the number: ";
+    cin >> n;
+    bool ans=isArmstrong(n);
+    if(ans==1){
+        cout<<"True";
+    }
+    else{
+        cout<<"False";
+    }
+    
 }
